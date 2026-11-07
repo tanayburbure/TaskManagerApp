@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from 'dotenv';
 import connectDB from "../config/db.js";
+import authRoutes from "../routes/auth.routes.js"
 
 dotenv.config();
 
@@ -16,6 +17,9 @@ app.get("/api/health",(req,res) => {
         status : "OK"
     });
 });
+
+//Authentication routes
+app.use("/api/auth",authRoutes);
 
 //start server
 const PORT = process.env.PORT || 8000;
